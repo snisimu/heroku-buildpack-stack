@@ -52,12 +52,12 @@ export STACK_ROOT=$CACHE_DIR/.stack
 
 ########## gmp #####################################################
 LIBGMP_VER=${LIBGMP_VER:-6.0.0a}
-LIBGMP_URL=${LIBGMP_URL:-https://gmplib.org/download/gmp/gmp-6.0.0a.tar.xz}
+LIBGMP_URL=${LIBGMP_URL:-https://gmplib.org/download/gmp/gmp-6.0.0a.tar.bz2}
 LIBGMP_DIR="$CACHE_DIR/libgmp-$LIBGMP_VER"
 if [ ! -e "$LIBGMP_DIR" ]; then
   speak "Installing libgmp-$LIBGMP_VER into cache"
   mkdir -p "$LIBGMP_DIR"
-  curl -L "https://www.dropbox.com/scl/fi/yoj152a20g7uh9uqriu3p/gmp-6.0.0.tar?rlkey=75gum2nufgraqm6v1nno3iojd&st=od2ol8by&dl=0" | tar xvf -C "$LIBGMP_DIR"
+  curl -# -L "$LIBGMP_URL" | tar xz -C "$LIBGMP_DIR"
 fi
 speak "Restoring $LIBGMP_VER files from cache"
 cp -Rp "$LIBGMP_DIR/ghc-libs/." "$WORK_DIR/vendor/ghc-libs"
