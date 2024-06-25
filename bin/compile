@@ -52,7 +52,7 @@ export STACK_ROOT=$CACHE_DIR/.stack
 
 ########## gmp #####################################################
 LIBGMP_VER=${LIBGMP_VER:-6.0.0a}
-LIBGMP_URL=${LIBGMP_URL:-https://s3.amazonaws.com/heroku-ghc/heroku-libgmp-"$LIBGMP_VER".tar.gz}
+LIBGMP_URL=${LIBGMP_URL:-https://gmplib.org/download/gmp/gmp-6.0.0a.tar.xz}
 LIBGMP_DIR="$CACHE_DIR/libgmp-$LIBGMP_VER"
 if [ ! -e "$LIBGMP_DIR" ]; then
   speak "Installing libgmp-$LIBGMP_VER into cache"
