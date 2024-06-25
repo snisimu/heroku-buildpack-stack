@@ -57,7 +57,7 @@ LIBGMP_DIR="$CACHE_DIR/libgmp-$LIBGMP_VER"
 if [ ! -e "$LIBGMP_DIR" ]; then
   speak "Installing libgmp-$LIBGMP_VER into cache"
   mkdir -p "$LIBGMP_DIR"
-  curl -# -L "$LIBGMP_URL" | tar xf -C "$LIBGMP_DIR"
+  curl -# -L "$LIBGMP_URL" | tar xz -C "$LIBGMP_DIR"
 fi
 speak "Restoring $LIBGMP_VER files from cache"
 cp -Rp "$LIBGMP_DIR/ghc-libs/." "$WORK_DIR/vendor/ghc-libs"
