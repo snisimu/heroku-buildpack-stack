@@ -51,6 +51,16 @@ export PATH=$WORK_DIR/.local/bin:$WORK_DIR/vendor/bin:$PATH
 export STACK_ROOT=$CACHE_DIR/.stack
 
 ########## gmp #####################################################
+LIBGMP_VER=${LIBGMP_VER:-6.0.0a}
+LIBGMP_URL=${LIBGMP_URL:-https://gmplib.org/download/gmp/gmp-"$LIBGMP_VER".tar.xz}
+LIBGMP_DIR="$CACHE_DIR/libgmp-$LIBGMP_VER"
+if [ ! -e "$LIBGMP_DIR" ]; then
+  speak "Installing libgmp-$LIBGMP_VER into cache"
+  mkdir -p "$LIBGMP_DIR"
+  curl -# -L "$LIBGMP_URL" | tar -xJ -C "$LIBGMP_DIR"
+fi
+speak "Restoring $LIBGMP_VER files from cache"
+cp -Rp "$LIBGMP_DIR/ghc-libs/." "$WORK_DIR/vendor/ghc-libs"
 
 ########## stack exe ###############################################
 STACK_VER=${STACK_VER:-2.3.1}
