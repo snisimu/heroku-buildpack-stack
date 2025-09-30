@@ -99,7 +99,8 @@ if [ -f "$BUILD_DIR/Makefile" ]; then
     make
     make install
 else
-    #stack setup
+    stack upgrade
+    stack setup
     stack build --copy-bins
 fi
 
